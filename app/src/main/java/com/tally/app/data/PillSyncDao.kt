@@ -10,7 +10,7 @@ import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface TallyDao {
+interface PillSyncDao {
 
     // ---- Medicines ----
     @Insert(onConflict = OnConflictStrategy.REPLACE)

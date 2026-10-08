@@ -71,7 +71,7 @@ private val SWATCHES = listOf(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditMedicineScreen(
-    vm: TallyViewModel,
+    vm: PillSyncViewModel,
     medicineId: Long,
     onDone: () -> Unit
 ) {

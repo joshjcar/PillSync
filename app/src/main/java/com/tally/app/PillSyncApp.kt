@@ -8,7 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
-class TallyApp : Application() {
+class PillSyncApp : Application() {
     val appScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
 
     override fun onCreate() {
@@ -16,7 +16,7 @@ class TallyApp : Application() {
         Notifications.ensureChannels(this)
         // Self-heal: make sure every alarm is armed whenever the app process starts.
         appScope.launch(Dispatchers.IO) {
-            runCatching { AlarmScheduler.rescheduleAll(this@TallyApp) }
+            runCatching { AlarmScheduler.rescheduleAll(this@PillSyncApp) }
         }
     }
 }

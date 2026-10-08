@@ -50,7 +50,7 @@ import androidx.compose.ui.unit.sp
 import com.tally.app.data.Meal
 import com.tally.app.data.MealRelation
 import com.tally.app.data.ScheduleType
-import com.tally.app.data.TallyDatabase
+import com.tally.app.data.PillSyncDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
@@ -134,7 +134,7 @@ private fun AlarmScreen(
 
     LaunchedEffect(scheduleId) {
         val loaded = withContext(Dispatchers.IO) {
-            val dao = TallyDatabase.get(context).dao()
+            val dao = PillSyncDatabase.get(context).dao()
             val sch = dao.getSchedule(scheduleId)
             val med = sch?.let { dao.getMedicine(it.medicineId) }
             if (med != null && sch != null) {

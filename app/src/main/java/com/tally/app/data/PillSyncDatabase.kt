@@ -14,11 +14,11 @@ import androidx.sqlite.db.SupportSQLiteDatabase
     exportSchema = false
 )
 @TypeConverters(Converters::class)
-abstract class TallyDatabase : RoomDatabase() {
-    abstract fun dao(): TallyDao
+abstract class PillSyncDatabase : RoomDatabase() {
+    abstract fun dao(): PillSyncDao
 
     companion object {
-        @Volatile private var INSTANCE: TallyDatabase? = null
+        @Volatile private var INSTANCE: PillSyncDatabase? = null
 
         /** v1 -> v2 adds stock-tracking columns to medicines without wiping data. */
         private val MIGRATION_1_2 = object : Migration(1, 2) {
@@ -29,11 +29,11 @@ abstract class TallyDatabase : RoomDatabase() {
             }
         }
 
-        fun get(context: Context): TallyDatabase =
+        fun get(context: Context): PillSyncDatabase =
             INSTANCE ?: synchronized(this) {
                 INSTANCE ?: Room.databaseBuilder(
                     context.applicationContext,
-                    TallyDatabase::class.java,
+                    PillSyncDatabase::class.java,
                     "tally.db"
                 ).addMigrations(MIGRATION_1_2)
                     .fallbackToDestructiveMigration()

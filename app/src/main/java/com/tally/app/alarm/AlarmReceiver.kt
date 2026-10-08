@@ -7,7 +7,7 @@ import android.os.Build
 import android.util.Log
 import com.tally.app.data.DoseLog
 import com.tally.app.data.DoseStatus
-import com.tally.app.data.TallyDatabase
+import com.tally.app.data.PillSyncDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -38,7 +38,7 @@ class AlarmReceiver : BroadcastReceiver() {
         val pending = goAsync()
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val dao = TallyDatabase.get(context).dao()
+                val dao = PillSyncDatabase.get(context).dao()
                 val item = dao.getSchedule(scheduleId)
                 if (item != null) {
                     val medicine = dao.getMedicine(item.medicineId)

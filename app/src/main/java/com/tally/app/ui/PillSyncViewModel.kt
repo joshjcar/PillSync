@@ -12,7 +12,7 @@ import com.tally.app.data.Medicine
 import com.tally.app.data.MedicineWithSchedules
 import com.tally.app.data.ScheduleItem
 import com.tally.app.data.SettingsStore
-import com.tally.app.data.TallyRepository
+import com.tally.app.data.PillSyncRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -21,8 +21,8 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class TallyViewModel(app: Application) : AndroidViewModel(app) {
-    private val repo = TallyRepository(app)
+class PillSyncViewModel(app: Application) : AndroidViewModel(app) {
+    private val repo = PillSyncRepository(app)
     val settings = SettingsStore(app)
 
     /** A safety backup found in Downloads on first run (for the one-tap restore prompt). */

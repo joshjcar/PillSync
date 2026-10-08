@@ -65,7 +65,7 @@ private val DarkColors = darkColorScheme(
 )
 
 @Composable
-fun TallyTheme(
+fun PillSyncTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {

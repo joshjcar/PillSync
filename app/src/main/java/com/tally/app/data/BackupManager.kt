@@ -14,7 +14,7 @@ object BackupManager {
     private const val VERSION = 1
 
     suspend fun exportJson(context: Context): String {
-        val dao = TallyDatabase.get(context).dao()
+        val dao = PillSyncDatabase.get(context).dao()
         val settings = SettingsStore(context)
         val root = JSONObject()
         root.put("version", VERSION)
@@ -76,7 +76,7 @@ object BackupManager {
         val medsArr = root.optJSONArray("medicines") ?: JSONArray()
         val schedArr = root.optJSONArray("schedules") ?: JSONArray()
 
-        val dao = TallyDatabase.get(context).dao()
+        val dao = PillSyncDatabase.get(context).dao()
 
         // Cancel every currently-armed alarm before we wipe the tables.
         dao.getAllSchedules().forEach { AlarmScheduler.cancel(context, it.id) }

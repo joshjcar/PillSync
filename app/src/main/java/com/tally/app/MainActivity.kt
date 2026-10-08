@@ -23,16 +23,16 @@ import com.tally.app.ui.HistoryScreen
 import com.tally.app.ui.HomeScreen
 import com.tally.app.ui.PrivacyScreen
 import com.tally.app.ui.SettingsScreen
-import com.tally.app.ui.TallyViewModel
-import com.tally.app.ui.theme.TallyTheme
+import com.tally.app.ui.PillSyncViewModel
+import com.tally.app.ui.theme.PillSyncTheme
 import androidx.compose.runtime.collectAsState
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TallyTheme {
-                val vm: TallyViewModel = viewModel()
+            PillSyncTheme {
+                val vm: PillSyncViewModel = viewModel()
 
                 var privacyAccepted by remember { mutableStateOf(vm.settings.privacyAccepted) }
                 if (!privacyAccepted) {
@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
                         vm.settings.privacyAccepted = true
                         privacyAccepted = true
                     })
-                    return@TallyTheme
+                    return@PillSyncTheme
                 }
 
                 val notifLauncher = rememberLauncherForActivityResult(

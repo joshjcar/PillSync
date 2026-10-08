@@ -10,7 +10,7 @@ import com.tally.app.MainActivity
 import com.tally.app.data.ScheduleItem
 import com.tally.app.data.ScheduleResolver
 import com.tally.app.data.SettingsStore
-import com.tally.app.data.TallyDatabase
+import com.tally.app.data.PillSyncDatabase
 
 /**
  * Arms and cancels exact OS alarms for schedules. Uses [AlarmManager.setAlarmClock] so the
@@ -99,7 +99,7 @@ object AlarmScheduler {
 
     /** Re-arm every active schedule of every active medicine. Called on boot, edits, and app start. */
     suspend fun rescheduleAll(context: Context) {
-        val dao = TallyDatabase.get(context).dao()
+        val dao = PillSyncDatabase.get(context).dao()
         val now = System.currentTimeMillis()
         val items = dao.getArmableSchedules()
         items.forEach { scheduleNext(context, it, now) }

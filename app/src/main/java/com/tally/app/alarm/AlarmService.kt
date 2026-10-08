@@ -24,7 +24,7 @@ import com.tally.app.MainActivity
 import com.tally.app.R
 import com.tally.app.data.DoseStatus
 import com.tally.app.data.SettingsStore
-import com.tally.app.data.TallyDatabase
+import com.tally.app.data.PillSyncDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -103,7 +103,7 @@ class AlarmService : Service() {
         // Load the medicine details and refresh the notification text.
         if (currentScheduleId > 0) {
             CoroutineScope(Dispatchers.IO).launch {
-                val dao = TallyDatabase.get(applicationContext).dao()
+                val dao = PillSyncDatabase.get(applicationContext).dao()
                 val schedule = dao.getSchedule(currentScheduleId)
                 val med = schedule?.let { dao.getMedicine(it.medicineId) }
                 // Schedule/medicine was deleted or disabled before this fired: don't ring.
@@ -273,7 +273,7 @@ class AlarmService : Service() {
         val at = currentScheduledAt
         if (sid <= 0) return
         CoroutineScope(Dispatchers.IO).launch {
-            val dao = TallyDatabase.get(applicationContext).dao()
+            val dao = PillSyncDatabase.get(applicationContext).dao()
             val existing = dao.findDoseLog(sid, at)
             if (existing != null && existing.status != status) {
                 dao.updateDoseLog(existing.copy(status = status, actedAt = System.currentTimeMillis()))

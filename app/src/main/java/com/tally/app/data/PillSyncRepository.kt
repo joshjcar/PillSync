@@ -8,8 +8,8 @@ import kotlinx.coroutines.flow.Flow
  * Single place that mutates data AND keeps the OS alarms in sync. Every write here cancels
  * stale alarms and arms fresh ones so the schedule on disk always matches what will ring.
  */
-class TallyRepository(private val context: Context) {
-    private val dao = TallyDatabase.get(context).dao()
+class PillSyncRepository(private val context: Context) {
+    private val dao = PillSyncDatabase.get(context).dao()
 
     fun observeMedicines(): Flow<List<Medicine>> = dao.observeMedicines()
     fun observeSchedules(): Flow<List<ScheduleItem>> = dao.observeSchedules()

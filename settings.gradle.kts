@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Tally"
+rootProject.name = "PillSync"
 include(":app")
