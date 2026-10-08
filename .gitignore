@@ -1,0 +1,37 @@
+# Gradle
+.gradle/
+build/
+/build/
+app/build/
+/captures/
+
+# Kotlin
+.kotlin/
+
+# Android Studio / IntelliJ
+*.iml
+/.idea/
+.externalNativeBuild/
+.cxx/
+
+# Local, machine-specific SDK path (never commit — points at this machine's SDK)
+/local.properties
+
+# Build outputs / binaries copied to the repo root
+*.apk
+*.aab
+*.aar
+*.ap_
+*.dex
+
+# Keystores & signing secrets (never commit)
+*.jks
+*.keystore
+keystore.properties
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

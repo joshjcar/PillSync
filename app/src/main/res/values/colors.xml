@@ -1,0 +1,5 @@
+<resources>
+    <color name="tally_bg">#FFF4F7FD</color>
+    <!-- Deep blue sampled from the Tally logo; shows behind the adaptive icon's rounded corners -->
+    <color name="ic_launcher_background">#0C44E8</color>
+</resources>
